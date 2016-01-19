@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.acme.geometry.Coordinate;
+import org.acme.geometry.Envelope;
+import org.acme.geometry.EnvelopeBuilder;
 import org.acme.geometry.LineString;
 import org.acme.geometry.Point;
 import org.acme.geometry.Polygon;
@@ -78,5 +80,23 @@ public class Application {
 			System.out.println(polygon.asText());
 		}
 
+		
+		
+		// EnvelopeBuilder empty
+		{
+			EnvelopeBuilder builder = new EnvelopeBuilder();
+			Envelope bbox = builder.getEnvelope();
+			System.out.println(bbox);
+		}
+		
+		// EnvelopeBuilder 
+		{
+			EnvelopeBuilder builder = new EnvelopeBuilder();
+			builder.insert(new Coordinate(2.0,2.0));
+			builder.insert(new Coordinate(3.0,4.0));
+			builder.insert(new Coordinate(1.0,3.0));
+			Envelope bbox = builder.getEnvelope();
+			System.out.println(bbox);
+		}
 	}
 }

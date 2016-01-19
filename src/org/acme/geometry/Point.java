@@ -61,4 +61,6 @@ public class Point implements Geometry {
 		Format format = new WKT();
 		return format.write(this);
 	}
+	
+	
 }

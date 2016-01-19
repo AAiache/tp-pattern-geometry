@@ -28,7 +28,8 @@ public class GeometryVisitorWKT implements GeometryVisitor {
 	@Override
 	public void visit(Point point) {
 		if ( point.isEmpty() ){
-			result = "POINT EMPTY"; // BUG REFACTORING
+			result = "POINT EMPTY";
+			return ;
 		}
 		result = "POINT"+writeInnerPoint(point);
 	}
@@ -37,6 +38,7 @@ public class GeometryVisitorWKT implements GeometryVisitor {
 	public void visit(LineString lineString) {
 		if ( lineString.isEmpty() ){
 			result = "LINESTRING EMPTY";
+			return ;
 		}
 		result = "LINESTRING"+writeInnerLineString(lineString);
 	}
@@ -46,6 +48,7 @@ public class GeometryVisitorWKT implements GeometryVisitor {
 	public void visit(Polygon polygon) {
 		if ( polygon.isEmpty() ){
 			result = "POLYGON EMPTY";
+			return ;
 		}
 		result = "POLYGON"+writeInnerPolygon(polygon) ;
 	}

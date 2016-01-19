@@ -1,5 +1,8 @@
 package org.acme.geometry;
 
+import org.acme.geometry.format.Format;
+import org.acme.geometry.format.WKT;
+
 /**
  * 
  * Un polygone définit par son contour extérieur
@@ -43,18 +46,8 @@ public class Polygon implements Geometry {
 
 	@Override
 	public String asText() {
-		if ( isEmpty() ){
-			return "POLYGON EMPTY";
-		}
-		String result = "POLYGON((";
-		for ( int i = 0; i < getExteriorRing().getNumPoints(); i++ ) {
-			if ( i != 0 ){
-				result += ",";
-			}
-			result += getExteriorRing().getPointN(i).getCoordinate() ;
-		}
-		result += "))";
-		return result ;
+		Format format = new WKT();
+		return format.write(this);
 	}
 	
 	

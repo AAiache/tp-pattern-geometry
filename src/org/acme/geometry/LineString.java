@@ -3,6 +3,9 @@ package org.acme.geometry;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.acme.geometry.format.Format;
+import org.acme.geometry.format.WKT;
+
 /**
  * 
  * Une polyligne vide ou décrite par au moins deux points
@@ -57,18 +60,8 @@ public class LineString implements Geometry {
 	
 	@Override
 	public String asText() {
-		if ( isEmpty() ){
-			return "LINESTRING EMPTY";
-		}
-		String result = "LINESTRING(";
-		for ( int i = 0; i < getNumPoints(); i++ ) {
-			if ( i != 0 ){
-				result += ",";
-			}
-			result += getPointN(i).getCoordinate() ;
-		}
-		result += ")";
-		return result ;
+		Format format = new WKT();
+		return format.write(this);
 	}
 	
 }

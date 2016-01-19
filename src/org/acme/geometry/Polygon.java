@@ -3,6 +3,8 @@ package org.acme.geometry;
 import org.acme.geometry.format.Format;
 import org.acme.geometry.format.WKT;
 
+import com.sun.corba.se.pept.transport.Acceptor;
+
 /**
  * 
  * Un polygone définit par son contour extérieur
@@ -51,7 +53,9 @@ public class Polygon implements Geometry {
 	}
 	
 	@Override
-	public void accept(GeometryVisitor visitor) {
-		visitor.visit(this);
+	public <ReturnType> ReturnType accept(
+		GeometryVisitor<ReturnType> visitor
+	) {
+		return visitor.visit(this);
 	}
 }

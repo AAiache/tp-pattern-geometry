@@ -7,7 +7,7 @@ package org.acme.geometry;
  * @author MBorne
  *
  */
-public interface GeometryVisitor {
+public interface GeometryVisitor<ReturnType> {
 	
 	/**
 	 * 
@@ -15,7 +15,7 @@ public interface GeometryVisitor {
 	 * 
 	 * @param point
 	 */
-	public void visit(Point point) ;
+	public ReturnType visit(Point point) ;
 	
 	/**
 	 * 
@@ -23,7 +23,7 @@ public interface GeometryVisitor {
 	 * 
 	 * @param lineString
 	 */
-	public void visit(LineString lineString) ;
+	public ReturnType visit(LineString lineString) ;
 	
 	/**
 	 * 
@@ -31,6 +31,6 @@ public interface GeometryVisitor {
 	 * 
 	 * @param polygon
 	 */
-	public void visit(Polygon polygon) ;
+	public ReturnType visit(Polygon polygon) ;
 	
 }

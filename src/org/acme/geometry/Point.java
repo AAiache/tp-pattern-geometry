@@ -62,10 +62,12 @@ public class Point implements Geometry {
 		return format.write(this);
 	}
 	
-	
+
 	@Override
-	public void accept(GeometryVisitor visitor) {
-		visitor.visit(this);
+	public <ReturnType> ReturnType accept(
+		GeometryVisitor<ReturnType> visitor
+	) {
+		return visitor.visit(this);
 	}
 	
 }

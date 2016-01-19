@@ -18,8 +18,7 @@ public class WKT implements Format {
 	@Override
 	public String write(Geometry geometry) {
 		GeometryVisitorWKT visitor = new GeometryVisitorWKT();
-		geometry.accept(visitor);
-		return visitor.getResult();
+		return geometry.accept(visitor);
 	}
 
 }

@@ -5,21 +5,24 @@ import org.acme.geometry.LineString;
 import org.acme.geometry.Point;
 import org.acme.geometry.Polygon;
 
-public class DemoGeometryVisitor implements GeometryVisitor {
+public class DemoGeometryVisitor implements GeometryVisitor<Void> {
 
 	@Override
-	public void visit(Point point) {
+	public Void visit(Point point) {
 		System.out.println("Traitement d'un point");
+		return null;
 	}
 
 	@Override
-	public void visit(LineString lineString) {
+	public Void visit(LineString lineString) {
 		System.out.println("Traitement d'une polyligne");
+		return null;
 	}
 
 	@Override
-	public void visit(Polygon polygon) {
+	public Void visit(Polygon polygon) {
 		System.out.println("Traitement d'un polygone");
+		return null;
 	}
 	
 	/*

@@ -10,44 +10,31 @@ import org.acme.geometry.Polygon;
  * @author MBorne
  *
  */
-public class GeometryVisitorWKT implements GeometryVisitor {
+public class GeometryVisitorWKT implements GeometryVisitor<String> {
 
-	/** 
-	 * Le WKT produit par la visite 
-	 * 
-	 * Remarque : Mis en place ainsi pour 
-	 * illustré la gestion d'une variable de retour.
-	 * En pratique, on utiliserait plutôt un "java.io.PrintWriter"
-	 */
-	private String result ;
-	
-	public String getResult(){
-		return result ;
-	}
-	
 	@Override
-	public void visit(Point point) {
+	public String visit(Point point) {
 		if ( point.isEmpty() ){
-			result = "POINT EMPTY"; // BUG REFACTORING
+			return "POINT EMPTY";
 		}
-		result = "POINT"+writeInnerPoint(point);
+		return "POINT"+writeInnerPoint(point);
 	}
 
 	@Override
-	public void visit(LineString lineString) {
+	public String visit(LineString lineString) {
 		if ( lineString.isEmpty() ){
-			result = "LINESTRING EMPTY";
+			return "LINESTRING EMPTY";
 		}
-		result = "LINESTRING"+writeInnerLineString(lineString);
+		return "LINESTRING"+writeInnerLineString(lineString);
 	}
 	
 
 	@Override
-	public void visit(Polygon polygon) {
+	public String visit(Polygon polygon) {
 		if ( polygon.isEmpty() ){
-			result = "POLYGON EMPTY";
+			return "POLYGON EMPTY";
 		}
-		result = "POLYGON"+writeInnerPolygon(polygon) ;
+		return "POLYGON"+writeInnerPolygon(polygon) ;
 	}
 
 	

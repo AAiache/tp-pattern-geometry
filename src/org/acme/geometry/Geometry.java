@@ -25,6 +25,8 @@ public interface Geometry {
 	 * Dispatching sur les méthodes du visitor
 	 * @param visitor
 	 */
-	public void accept(GeometryVisitor visitor) ;
+	public <ReturnType> ReturnType accept(
+		GeometryVisitor<ReturnType> visitor
+	) ;
 	
 }

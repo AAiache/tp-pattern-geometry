@@ -31,7 +31,7 @@ public class LineString implements Geometry {
 	 * @param points
 	 */
 	public LineString(List<Point> points){
-		this.points = points ;
+		this.points = new ArrayList<Point>(points) ;
 	}
 	
 	

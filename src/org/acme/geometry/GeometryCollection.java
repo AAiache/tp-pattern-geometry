@@ -1,6 +1,7 @@
 package org.acme.geometry;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.acme.geometry.format.Format;
@@ -29,7 +30,7 @@ public class GeometryCollection implements Geometry {
 	 * @param geometries
 	 */
 	public GeometryCollection(List<Geometry> geometries){
-		this.geometries = geometries;
+		this.geometries = new ArrayList<Geometry>(geometries);
 	}
 	
 

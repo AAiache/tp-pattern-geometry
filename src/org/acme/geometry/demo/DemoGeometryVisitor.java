@@ -1,5 +1,6 @@
 package org.acme.geometry.demo;
 
+import org.acme.geometry.GeometryCollection;
 import org.acme.geometry.GeometryVisitor;
 import org.acme.geometry.LineString;
 import org.acme.geometry.Point;
@@ -25,6 +26,12 @@ public class DemoGeometryVisitor implements GeometryVisitor<Void> {
 		return null;
 	}
 	
+	@Override
+	public Void visit(GeometryCollection collection) {
+		System.out.println("Traitement d'une collection");
+		return null;
+	}
+	
 	/*
 	 * Traitement d'un point
      * Traitement d'une polyligne
@@ -43,6 +50,10 @@ public class DemoGeometryVisitor implements GeometryVisitor<Void> {
 		{
 			Polygon polygon = new Polygon();
 			polygon.accept(visitor);
+		}
+		{
+			GeometryCollection collection = new GeometryCollection();
+			collection.accept(visitor);
 		}
 	}
 

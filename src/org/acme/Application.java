@@ -6,6 +6,8 @@ import java.util.List;
 import org.acme.geometry.Coordinate;
 import org.acme.geometry.Envelope;
 import org.acme.geometry.EnvelopeBuilder;
+import org.acme.geometry.Geometry;
+import org.acme.geometry.GeometryCollection;
 import org.acme.geometry.LineString;
 import org.acme.geometry.Point;
 import org.acme.geometry.Polygon;
@@ -22,6 +24,7 @@ public class Application {
 	public static void main(String[] args) {
 		// Note : Ressemble beaucoup à des tests.
 		
+		List<Geometry> geometries = new ArrayList<Geometry>();
 		// Point
 		{
 			Point point = new Point();
@@ -36,6 +39,7 @@ public class Application {
 			assert( ! point.isEmpty() );
 			assert( point.asText().equals("POINT(3.0 4.0)") ) ;
 			System.out.println(point.asText());
+			geometries.add(point);
 		}
 		
 		// LineString vide
@@ -57,6 +61,7 @@ public class Application {
 			assert( lineString.getNumPoints() == 2 );
 			assert( lineString.asText().equals("LINESTRING(0.0 0.0,3.0 4.0)") );
 			System.out.println(lineString.asText());
+			geometries.add(lineString);
 		}
 		
 		// Polygon vide
@@ -81,8 +86,14 @@ public class Application {
 			assert( ! polygon.isEmpty() );
 			assert( polygon.asText().equals("LINESTRING(0.0 0.0,3.0 4.0)") );
 			System.out.println(polygon.asText());
+			geometries.add(polygon);
 		}
 
+		// GeometryCollection non vide
+		{
+			GeometryCollection collection = new GeometryCollection(geometries);
+			System.out.println(collection.asText());			
+		}
 		
 		
 		// EnvelopeBuilder empty

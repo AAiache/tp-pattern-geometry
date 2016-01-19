@@ -1,5 +1,6 @@
 package org.acme.geometry.format.impl;
 
+import org.acme.geometry.GeometryCollection;
 import org.acme.geometry.GeometryVisitor;
 import org.acme.geometry.LineString;
 import org.acme.geometry.Point;
@@ -37,17 +38,18 @@ public class GeometryVisitorWKT implements GeometryVisitor<String> {
 		return "POLYGON"+writeInnerPolygon(polygon) ;
 	}
 
+	@Override
+	public String visit(GeometryCollection collection){
+		if ( collection.isEmpty() ){
+			return "GEOMETRYCOLLECTION EMPTY";
+		}
+		return "GEOMETRYCOLLECTION"+writeInnerGeometryCollection(collection) ;
+	}
 	
 	private String writeInnerPoint(Point point){
 		return "("+point.getCoordinate()+")";
 	}
 	
-	private String writeInnerPolygon(Polygon polygon){
-		String result = "(";
-		result += writeInnerLineString(polygon.getExteriorRing());
-		result += ")";
-		return result ;
-	}
 
 	private String writeInnerLineString(LineString lineString) {
 		String result = "(";
@@ -60,6 +62,29 @@ public class GeometryVisitorWKT implements GeometryVisitor<String> {
 		result += ")";
 		return result ;
 	}
+	
+
+	private String writeInnerPolygon(Polygon polygon){
+		String result = "(";
+		result += writeInnerLineString(polygon.getExteriorRing());
+		result += ")";
+		return result ;
+	}
+	
+
+	private String writeInnerGeometryCollection(GeometryCollection collection) {
+		String result = "(";
+		for ( int i = 0; i < collection.getNumGeometries(); i++ ) {
+			if ( i != 0 ){
+				result += ",";
+			}
+			// visite des éléments de collection
+			result += collection.getGeometryN(i).accept(this);
+		}
+		result += ")";
+		return result ;
+	}
+
 	
 }
 

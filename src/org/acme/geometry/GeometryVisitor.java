@@ -33,4 +33,12 @@ public interface GeometryVisitor<ReturnType> {
 	 */
 	public ReturnType visit(Polygon polygon) ;
 	
+	/**
+	 * 
+	 * Traitement spécifique à une collection de géométrie
+	 * 
+	 * @param collection
+	 * @return
+	 */
+	public ReturnType visit(GeometryCollection collection);
 }

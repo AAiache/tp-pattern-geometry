@@ -70,8 +70,11 @@ public class Application {
 		{
 			List<Point> points = new ArrayList<Point>();
 			points.add(new Point(new Coordinate(0.0,0.0)));
-			points.add(new Point(new Coordinate(3.0,4.0)));
-			
+			points.add(new Point(new Coordinate(1.0,0.0)));
+			points.add(new Point(new Coordinate(1.0,1.0)));
+			points.add(new Point(new Coordinate(0.0,1.0)));
+			points.add(new Point(new Coordinate(0.0,0.0)));
+
 			LineString exteriorRing = new LineString(points);
 			Polygon polygon = new Polygon(exteriorRing);
 			

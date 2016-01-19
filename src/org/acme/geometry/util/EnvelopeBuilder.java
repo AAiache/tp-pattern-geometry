@@ -1,5 +1,9 @@
-package org.acme.geometry;
+package org.acme.geometry.util;
 
+import org.acme.geometry.AbstractPointVisitor;
+import org.acme.geometry.Coordinate;
+import org.acme.geometry.Envelope;
+import org.acme.geometry.Point;
 import org.acme.math.Interval;
 
 /**
@@ -7,15 +11,18 @@ import org.acme.math.Interval;
  * @author MBorne
  *
  */
-public class EnvelopeBuilder {
+public class EnvelopeBuilder extends AbstractPointVisitor {
+	
 	/**
 	 * Interval sur les X
 	 */
 	private Interval xInterval ;
+	
 	/**
 	 * Interval sur les Y
 	 */
 	private Interval yInterval ;
+	
 	
 	public EnvelopeBuilder(){
 		this.xInterval = new Interval();
@@ -48,6 +55,12 @@ public class EnvelopeBuilder {
 			bottomLeft,
 			topRight
 		);
+	}
+
+	@Override
+	public Void visit(Point point) {
+		insert(point.getCoordinate());
+		return null;
 	}
 	
 }

@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.acme.geometry.Coordinate;
 import org.acme.geometry.Envelope;
-import org.acme.geometry.EnvelopeBuilder;
 import org.acme.geometry.Geometry;
 import org.acme.geometry.GeometryCollection;
 import org.acme.geometry.LineString;
 import org.acme.geometry.Point;
 import org.acme.geometry.Polygon;
+import org.acme.geometry.util.EnvelopeBuilder;
 
 public class Application {
 	/*
@@ -40,6 +40,7 @@ public class Application {
 			assert( point.asText().equals("POINT(3.0 4.0)") ) ;
 			System.out.println(point.asText());
 			geometries.add(point);
+			System.out.println(point.getEnvelope());
 		}
 		
 		// LineString vide
@@ -61,6 +62,8 @@ public class Application {
 			assert( lineString.getNumPoints() == 2 );
 			assert( lineString.asText().equals("LINESTRING(0.0 0.0,3.0 4.0)") );
 			System.out.println(lineString.asText());
+			System.out.println(lineString.getEnvelope());
+			
 			geometries.add(lineString);
 		}
 		
@@ -70,6 +73,7 @@ public class Application {
 			assert(polygon.isEmpty());
 			assert(polygon.asText().equals("POLYGON EMPTY"));
 			System.out.println(polygon.asText());
+			System.out.println(polygon.getEnvelope());
 		}
 		
 		{
@@ -86,6 +90,8 @@ public class Application {
 			assert( ! polygon.isEmpty() );
 			assert( polygon.asText().equals("LINESTRING(0.0 0.0,3.0 4.0)") );
 			System.out.println(polygon.asText());
+			System.out.println(polygon.getEnvelope());
+			
 			geometries.add(polygon);
 		}
 

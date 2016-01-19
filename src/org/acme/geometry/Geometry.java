@@ -8,6 +8,12 @@ public interface Geometry {
 	public boolean isEmpty() ;
 	
 	/**
+	 * Renvoie la boite englobante de la géométrie
+	 * @return
+	 */
+	public Envelope getEnvelope() ;
+	
+	/**
 	 * Conversion au format WKT
 	 * @return
 	 */

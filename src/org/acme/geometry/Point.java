@@ -1,5 +1,8 @@
 package org.acme.geometry;
 
+import org.acme.geometry.format.Format;
+import org.acme.geometry.format.WKT;
+
 /**
  * 
  * @author MBorne
@@ -55,10 +58,7 @@ public class Point implements Geometry {
 
 	@Override
 	public String asText() {
-		if ( isEmpty() ){
-			return "POINT EMPTY";
-		}else{
-			return "POINT("+coordinate+")";
-		}
+		Format format = new WKT();
+		return format.write(this);
 	}
 }

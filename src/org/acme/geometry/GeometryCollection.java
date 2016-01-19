@@ -14,7 +14,7 @@ import org.acme.geometry.format.WKT;
  * @author MBorne
  *
  */
-public class GeometryCollection implements Geometry {
+public class GeometryCollection extends AbstractGeometry {
 	
 	private List<Geometry> geometries ;
 	
@@ -54,13 +54,6 @@ public class GeometryCollection implements Geometry {
 	 */
 	public Geometry getGeometryN(int n){
 		return geometries.get(n);
-	}
-
-	
-	@Override
-	public String asText() {
-		Format format = new WKT();
-		return format.write(this);
 	}
 
 	@Override

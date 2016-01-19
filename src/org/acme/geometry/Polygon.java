@@ -12,7 +12,7 @@ import com.sun.corba.se.pept.transport.Acceptor;
  * @author MBorne
  *
  */
-public class Polygon implements Geometry {
+public class Polygon extends AbstractGeometry {
 	/**
 	 * Contour extérieur du polygone
 	 */
@@ -46,11 +46,6 @@ public class Polygon implements Geometry {
 		return exteriorRing.isEmpty();
 	}
 
-	@Override
-	public String asText() {
-		Format format = new WKT();
-		return format.write(this);
-	}
 	
 	@Override
 	public <ReturnType> ReturnType accept(

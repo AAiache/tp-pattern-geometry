@@ -8,7 +8,7 @@ import org.acme.geometry.format.WKT;
  * @author MBorne
  *
  */
-public class Point implements Geometry {
+public class Point extends AbstractGeometry {
 	
 	/**
 	 * Point coordinate
@@ -56,12 +56,6 @@ public class Point implements Geometry {
 		return coordinate.isEmpty();
 	}
 
-	@Override
-	public String asText() {
-		Format format = new WKT();
-		return format.write(this);
-	}
-	
 
 	@Override
 	public <ReturnType> ReturnType accept(

@@ -13,7 +13,7 @@ import org.acme.geometry.format.WKT;
  * @author MBorne
  *
  */
-public class LineString implements Geometry {
+public class LineString extends AbstractGeometry {
 	/**
 	 * Les points définissant la LineString
 	 */
@@ -55,13 +55,6 @@ public class LineString implements Geometry {
 	 */
 	public Point getPointN(int n){
 		return points.get(n);
-	}
-	
-	
-	@Override
-	public String asText() {
-		Format format = new WKT();
-		return format.write(this);
 	}
 	
 	

@@ -2,6 +2,7 @@
 
 Application de quelques patrons de conception à des classes géométriques (standard OGC Simple Feature simplifié).
 
+
 ## Modèle de données
 
 ![UML](doc/geometry.png)

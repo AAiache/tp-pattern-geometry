@@ -21,4 +21,10 @@ public interface Geometry {
 	 */
 	public String asText() ;
 	
+	/**
+	 * Dispatching sur les méthodes du visitor
+	 * @param visitor
+	 */
+	public void accept(GeometryVisitor visitor) ;
+	
 }
